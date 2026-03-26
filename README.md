@@ -150,5 +150,16 @@ ONYX Archiver is not just an archiver, but a complete secure data exchange syste
 ---
 
 ## Screenshots
+<img width="888" height="597" alt="new-version-dialog-message" src="https://github.com/user-attachments/assets/9ad5056f-1a28-4b8d-bf68-696042ad6341" />
+<img width="589" height="158" alt="update-agent-window-with-new-version-installing" src="https://github.com/user-attachments/assets/1ca2cbef-9a84-4e07-8532-16a17f6b6205" />
+<img width="889" height="597" alt="registration-form" src="https://github.com/user-attachments/assets/7646ebe1-a5e0-4a14-b884-e5c817f5dad0" />
+<img width="888" height="596" alt="login-form" src="https://github.com/user-attachments/assets/317d51d9-3fcc-4e23-b740-04c2fc918e73" /><img width="887" height="595" alt="create-archive-section" src="https://github.com/user-attachments/assets/3ab28ddf-d3d8-43ec-a64a-366768f60632" />
+<img width="888" height="596" alt="open-archive-section" src="https://github.com/user-attachments/assets/6e8f280a-ab6b-4c11-9f6b-6df071a601fd" />
+<img width="889" height="596" alt="peers-list-section" src="https://github.com/user-attachments/assets/b2e2a3d5-d17b-4fca-a1bf-3b25a8fc870b" />
+<img width="888" height="596" alt="settings-section" src="https://github.com/user-attachments/assets/91755c0b-ec3d-4220-8<img width="889" height="599" alt="recipient-selection-dialog" src="https://github.com/user-attachments/assets/e2d9535e-9e5e-4a30-bc9f-316e2667edda" />
+4e7-9c7b583ea605" />
+<img width="888" height="596" alt="archive-creation-process-dialog" src="https://github.com/user-atta<img width="890" height="597" alt="opened-archive-files-selection" src="https://github.com/user-attachments/assets/0a1658a7-a746-48b5-95d6-0acc50de7be9" />
+chments/assets/6adfef95-c08f-422f-8d82-99204e9264a2" />
+<img width="890" height="597" alt="archive-files-extraction-process-dialog" src="https://github.com/user-attachments/assets/6599f1c6-9c9e-439b-ac7c-20c38273b5dd" />
 
-_Add screenshots here_
+The full set of screenshots is available in the `screenshots` folder.
