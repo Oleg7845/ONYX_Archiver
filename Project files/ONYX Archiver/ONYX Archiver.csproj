@@ -1,0 +1,118 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RootNamespace>OnyxArchiver</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>UI\Resources\Icons\LogoAndIcon\onyx_logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UI\Resources\Icons\ArchiveTree\arrow_up.png" />
+    <None Remove="UI\Resources\Icons\ArchiveTree\cancel.png" />
+    <None Remove="UI\Resources\Icons\ArchiveTree\down_arrow.png" />
+    <None Remove="UI\Resources\Icons\ArchiveTree\file.png" />
+    <None Remove="UI\Resources\Icons\ArchiveTree\folder.png" />
+    <None Remove="UI\Resources\Icons\ArchiveTree\up_arrow.png" />
+    <None Remove="UI\Resources\Icons\AuthForms\arrow_forward.png" />
+    <None Remove="UI\Resources\Icons\AuthForms\edit.png" />
+    <None Remove="UI\Resources\Icons\AuthForms\eye.png" />
+    <None Remove="UI\Resources\Icons\AuthForms\eye_hidden.png" />
+    <None Remove="UI\Resources\Icons\AuthForms\login.png" />
+    <None Remove="UI\Resources\Icons\AuthForms\padlock.png" />
+    <None Remove="UI\Resources\Icons\AuthForms\user.png" />
+    <None Remove="UI\Resources\Icons\AuthForms\user_plus.png" />
+    <None Remove="UI\Resources\Icons\PeersItems\edit.png" />
+    <None Remove="UI\Resources\Icons\PeersItems\save.png" />
+    <None Remove="UI\Resources\Icons\PeersItems\trash.png" />
+    <None Remove="UI\Resources\Icons\PeersItems\user_key.png" />
+    <None Remove="UI\Resources\Icons\PeersItems\user_link.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\archive.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\change_password.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\checkmark.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\link.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\logout.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\open_box.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\plus.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\refresh.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\upload.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\users.png" />
+    <None Remove="UI\Resources\Icons\ToolbarButtons\user_delete.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <Resource Include="UI\Resources\Icons\ArchiveTree\arrow_up.png" />
+	  <Resource Include="UI\Resources\Icons\ArchiveTree\cancel.png" />
+	  <Resource Include="UI\Resources\Icons\ArchiveTree\down_arrow.png" />
+	  <Resource Include="UI\Resources\Icons\ArchiveTree\file.png" />
+	  <Resource Include="UI\Resources\Icons\ArchiveTree\folder.png" />
+	  <Resource Include="UI\Resources\Icons\ArchiveTree\up_arrow.png" />
+	  <Resource Include="UI\Resources\Icons\AuthForms\arrow_forward.png" />
+	  <Resource Include="UI\Resources\Icons\AuthForms\edit.png" />
+	  <Resource Include="UI\Resources\Icons\AuthForms\eye.png" />
+	  <Resource Include="UI\Resources\Icons\AuthForms\eye_hidden.png" />
+	  <Resource Include="UI\Resources\Icons\AuthForms\login.png" />
+	  <Resource Include="UI\Resources\Icons\AuthForms\padlock.png" />
+	  <Resource Include="UI\Resources\Icons\AuthForms\user.png" />
+	  <Resource Include="UI\Resources\Icons\AuthForms\user_plus.png" />
+	  <Resource Include="UI\Resources\Icons\PeersItems\edit.png" />
+	  <Resource Include="UI\Resources\Icons\PeersItems\save.png" />
+	  <Resource Include="UI\Resources\Icons\PeersItems\trash.png" />
+	  <Resource Include="UI\Resources\Icons\PeersItems\user_key.png" />
+	  <Resource Include="UI\Resources\Icons\PeersItems\user_link.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\archive.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\change_password.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\checkmark.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\link.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\logout.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\open_box.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\plus.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\refresh.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\settings.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\upload.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\users.png" />
+	  <Resource Include="UI\Resources\Icons\ToolbarButtons\user_delete.png" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<ApplicationDefinition Include="UI\App.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="UI\Resources\Icons\LogoAndIcon\onyx_logo.ico" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.5" />
+    <PackageReference Include="NSec.Cryptography" Version="25.4.0" />
+    <PackageReference Include="Serilog" Version="4.3.1" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="2.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="ZstdSharp.Port" Version="0.8.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoCore\CryptoCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UI\MVVM\Archive\Open\Progress\ProgressWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\MVVM\Main\Progress\ProgressWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
