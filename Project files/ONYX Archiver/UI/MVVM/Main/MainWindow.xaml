@@ -1,0 +1,90 @@
+﻿<Window x:Class="OnyxArchiver.UI.MVVM.Main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnyxArchiver.UI.MVVM.Main"
+        xmlns:components="clr-namespace:OnyxArchiver.UI.Components"
+        xmlns:overlay="clr-namespace:OnyxArchiver.UI.MVVM.Main.Overlay"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="ONYX Archiver"
+        Height="600"
+        Width="900"
+        Background="{StaticResource GrayBrush}">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    <Grid>
+        <DockPanel>
+            <Border
+                DockPanel.Dock="Top" 
+                Background="{StaticResource BlackBrush}"
+                Visibility="{Binding IsNavigationVisible, Converter={StaticResource BoolToVis}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <components:ToolbarButton 
+                            Text="Add" 
+                            Icon="/ONYX Archiver;component/UI/Resources/Icons/ToolbarButtons/plus.png"
+                            IconSize="32"
+                            Width="60"
+                            Margin="10,10,0,10"
+                            Command="{Binding ShowAddArchiveCommand}"/>
+
+                        <components:ToolbarButton 
+                            Text="Open" 
+                            Icon="/ONYX Archiver;component/UI/Resources/Icons/ToolbarButtons/open_box.png"
+                            IconSize="32"
+                            Width="60"
+                            Margin="0,10"
+                            Command="{Binding ShowOpenArchiveCommand}"/>
+
+                        <components:ToolbarButton 
+                            Text="Peers" 
+                            Icon="/ONYX Archiver;component/UI/Resources/Icons/ToolbarButtons/users.png"
+                            IconSize="32"
+                            Width="60"
+                            Margin="0,10"
+                            Command="{Binding ShowPeersCommand}"/>
+
+                        <components:ToolbarButton
+                            Text="Settings"
+                            Icon="/ONYX Archiver;component/UI/Resources/Icons/ToolbarButtons/settings.png"
+                            IconSize="32"
+                            Width="60"
+                            Margin="0,10"
+                            Command="{Binding ShowSettingsCommand}"/>
+                    </StackPanel>
+
+                    <components:ToolbarButton
+                        Grid.Column="1"
+                        Text="Log out"
+                        Icon="/ONYX Archiver;component/UI/Resources/Icons/ToolbarButtons/logout.png"
+                        IconSize="32"
+                        Width="60"
+                        Margin="0,10,10,10"
+                        Command="{Binding LogoutCommand}"/>
+                </Grid>
+            </Border>
+
+            <ContentControl Content="{Binding CurrentView}" />
+        </DockPanel>
+        
+        <TextBlock 
+            Text="{Binding AppVersion}"
+            Foreground="{StaticResource SecondaryTextBrush}"
+            FontSize="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="0,0,10,10"
+            IsHitTestVisible="False"/>
+        
+        <overlay:OverlayHost x:Name="Overlay"/>
+    </Grid>
+</Window>

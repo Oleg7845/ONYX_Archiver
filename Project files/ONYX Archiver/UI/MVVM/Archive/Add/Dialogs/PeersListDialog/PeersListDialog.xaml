@@ -1,0 +1,160 @@
+﻿<Window x:Class="OnyxArchiver.UI.MVVM.Archive.Add.Dialogs.PeersListDialog.PeersListDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnyxArchiver.UI.MVVM.Archive.Add.Dialogs.PeersListDialog"
+        xmlns:components="clr-namespace:OnyxArchiver.UI.Components"
+        mc:Ignorable="d"
+        Title="Select peer" Height="400" Width="800"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource GrayBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid
+            Grid.Row="0"
+            ItemsSource="{Binding Peers}"
+            SelectedItem="{Binding SelectedPeer, Mode=TwoWay}" 
+            SelectionMode="Single"
+            SelectionUnit="FullRow"
+            GridLinesVisibility="All" 
+            HorizontalGridLinesBrush="#333333" 
+            VerticalGridLinesBrush="#333333"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            Background="Transparent"
+            BorderThickness="0"
+            HeadersVisibility="Column"
+            AlternationCount="2" 
+            RowBackground="{StaticResource BlackBrush}" 
+            AlternatingRowBackground="{StaticResource GrayBrush}"
+            ScrollViewer.ScrollChanged="PeersGrid_ScrollChanged">
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="ID" Width="270" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
+
+                                <Border Width="14" Height="14" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType=DataGridCell}}" Margin="0,0,8,0">
+                                    <Border.OpacityMask>
+                                        <ImageBrush
+                                    ImageSource="/ONYX Archiver;component/UI/Resources/Icons/PeersItems/user_key.png"
+                                    Stretch="Uniform"
+                                    RenderOptions.BitmapScalingMode="HighQuality"/>
+                                    </Border.OpacityMask>
+                                </Border>
+
+                                <TextBlock Text="{Binding PeerId}"
+                            VerticalAlignment="Center"
+                            Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=DataGridCell}}"/>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10,0"/>
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=DataGridCell}}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn
+            Header="Created At"
+            Binding="{Binding CreatedAt, StringFormat=\{0:dd.MM.yyyy HH:mm\}}"
+            Width="110"
+            IsReadOnly="True">
+
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10,0"/>
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=DataGridCell}}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn
+                    Header="Finalized At"
+                    Binding="{Binding FinalizedAt, StringFormat=\{0:dd.MM.yyyy HH:mm\}}"
+                    Width="110"
+                    IsReadOnly="True">
+
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10,0"/>
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=DataGridCell}}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="{StaticResource GrayBrush}"/>
+                    <Setter Property="Foreground" Value="#808695"/>
+                    <Setter Property="FontSize" Value="13"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Padding" Value="10,8"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                    <Setter Property="BorderBrush" Value="#333333"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#252526"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#3F3F46"/>
+                            <Setter Property="Foreground" Value="{StaticResource MainTextLightBrush}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+
+        <!-- <StackPanel
+            Grid.Row="1"
+            Orientation="Horizontal" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Bottom"
+            Margin="0,20">
+
+            <components:SolidButton
+                HorizontalAlignment="Center"
+                Width="120"
+                Height="40"
+                FontSize="14"
+                Background="{StaticResource ErrorMessageBrush}"
+                CornerRadius="8"
+                Text="Cancel"
+                LeftIcon="/UI/Resources/Icons/ArchiveTree/cancel.png"
+                IconColor="#FFFFFF"
+                Command="{Binding CloseDialogCommand}"/>
+        </StackPanel> -->
+    </Grid>
+</Window>
