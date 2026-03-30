@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/UpdateServer/">
+    <Project Path="UpdateServer/UpdateServer.Api/UpdateServer.Api.csproj" />
+    <Project Path="UpdateServer/UpdateServer.Application/UpdateServer.Application.csproj" />
+    <Project Path="UpdateServer/UpdateServer.Domain/UpdateServer.Domain.csproj" />
+    <Project Path="UpdateServer/UpdateServer.Infrastructure/UpdateServer.Infrastructure.csproj" />
+  </Folder>
+  <Project Path="CryptoCore/CryptoCore.csproj" Id="aa3cb7ea-53ab-43c4-987d-c3f2f83f34f4" />
+  <Project Path="ONYX Archiver/ONYX Archiver.csproj" />
+  <Project Path="UpdateAgent/UpdateAgent.csproj" />
+</Solution>

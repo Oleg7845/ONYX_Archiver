@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Start App + Server",
+    "Projects": [
+      {
+        "Path": "UpdateServer\\UpdateServer.Api\\UpdateServer.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "ONYX Archiver\\ONYX Archiver.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

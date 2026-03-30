@@ -1,0 +1,40 @@
+﻿<Window x:Class="UpdateAgent.UI.MVVM.Main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UpdateAgent.UI.MVVM.Main"
+        mc:Ignorable="d"
+        Title="Update Agent"
+        Height="160"
+        Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BlackBrush}">
+    
+    <Grid>
+        <StackPanel
+            Margin="20">
+            
+            <TextBlock
+                Text="{Binding UpdatingProcessTitle}"
+                Foreground="{StaticResource MainTextBrush}"
+                FontSize="16"
+                FontWeight="DemiBold"/>
+            
+            <ProgressBar
+                Height="15"
+                Margin="0,15,0,10"
+                Value="{Binding Progress}"
+                Minimum="0"
+                Maximum="1"
+                Foreground="{StaticResource GreenButtonBrush}"
+                Background="#1A1A1A"
+                BorderThickness="0"/>
+
+            <TextBlock
+                Text="{Binding Status}"
+                Foreground="{StaticResource MainTextBrush}"
+                FontSize="11"/>
+        </StackPanel>
+    </Grid>
+</Window>
