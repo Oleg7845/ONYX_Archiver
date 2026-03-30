@@ -1,0 +1,144 @@
+﻿<UserControl x:Class="OnyxArchiver.UI.Components.TextInput"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OnyxArchiver.UI.Components"
+             xmlns:conv="clr-namespace:OnyxArchiver.UI.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="300"
+             x:Name="parent">
+
+    <UserControl.Resources>
+        <conv:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Command, ElementName=parent, Converter={StaticResource NullToVisibilityConverter}}" Value="Visible">
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+    
+    <Border BorderBrush="#202020" BorderThickness="1" CornerRadius="4" Background="#2B2B2B">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="leftIcon"
+                   Grid.Column="0"
+                   Source="{Binding LeftIcon, ElementName=parent}" 
+                   Width="18"
+                   Height="18" 
+                   Margin="12,0,5,0"
+                   Stretch="Uniform" 
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Visibility="{Binding LeftIcon, ElementName=parent, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+            <Grid Grid.Column="1" VerticalAlignment="Center" Margin="3,0,10,0">
+                <TextBlock x:Name="placeholder"
+                    Text="{Binding Placeholder, ElementName=parent}"
+                    FontSize="16"
+                    Foreground="{StaticResource SecondaryTextBrush}"
+                    IsHitTestVisible="False"
+                    VerticalAlignment="Center"
+                    Padding="3,0,0,0">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=parent}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Text, ElementName=parent}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <TextBox x:Name="textInput"
+                    Text="{Binding Text, ElementName=parent, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="16"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="{StaticResource MainTextBrush}"
+                    CaretBrush="{StaticResource MainTextBrush}"
+                    VerticalContentAlignment="Center"
+                    TextChanged="textInput_TextChanged">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsPasswordMode, ElementName=parent}" Value="True"/>
+                                        <Condition Binding="{Binding IsPasswordVisible, ElementName=parent}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+
+                <PasswordBox x:Name="passwordInput"
+                    PasswordChanged="passwordInput_PasswordChanged"
+                    FontSize="14"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="{StaticResource MainTextBrush}"
+                    CaretBrush="{StaticResource MainTextBrush}"
+                    VerticalContentAlignment="Center">
+                    <PasswordBox.Style>
+                        <Style TargetType="PasswordBox">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsPasswordMode, ElementName=parent}" Value="True"/>
+                                        <Condition Binding="{Binding IsPasswordVisible, ElementName=parent}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </PasswordBox.Style>
+                </PasswordBox>
+            </Grid>
+
+            <Button x:Name="togglePasswordVisibility"
+                Grid.Column="2"
+                Width="24"
+                Height="24"
+                Margin="0,0,10,0"
+                Style="{StaticResource NoHoverButtonStyle}"
+                Background="Transparent"
+                BorderThickness="0"
+                Cursor="Hand"
+                VerticalContentAlignment="Center"
+                Click="togglePasswordVisibility_Click"
+                Visibility="{Binding IsPasswordMode, ElementName=parent, Converter={StaticResource BoolToVis}}">
+                <Image Width="18" Height="18" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Setter Property="Source" Value="/ONYX Archiver;component/UI/Resources/Icons/AuthForms/eye.png" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsPasswordVisible, ElementName=parent}" Value="True">
+                                    <Setter Property="Source" Value="/ONYX Archiver;component/UI/Resources/Icons/AuthForms/eye_hidden.png" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>

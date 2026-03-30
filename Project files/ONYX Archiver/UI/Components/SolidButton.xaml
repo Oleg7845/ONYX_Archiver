@@ -1,0 +1,135 @@
+﻿<Button x:Class="OnyxArchiver.UI.Components.SolidButton"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="thisBtn"
+        Foreground="White" 
+        BorderThickness="0" 
+        Cursor="Hand"
+        HorizontalAlignment="Center">
+
+    <Button.Template>
+        <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="mainBorder" 
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding CornerRadius, ElementName=thisBtn}"
+                    Padding="{TemplateBinding Padding}"
+                    SnapsToDevicePixels="True">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                    <Grid x:Name="LeftIconHost" Margin="0,0,8,0" VerticalAlignment="Center">
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding LeftIcon, ElementName=thisBtn}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+
+                        <Image Source="{Binding LeftIcon, ElementName=thisBtn}" 
+                               Width="16" Height="16" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IconColor, ElementName=thisBtn}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+
+                        <Border Width="16" Height="16" Background="{Binding IconColor, ElementName=thisBtn}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IconColor, ElementName=thisBtn}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Border.OpacityMask>
+                                <ImageBrush ImageSource="{Binding LeftIcon, ElementName=thisBtn}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border.OpacityMask>
+                        </Border>
+                    </Grid>
+
+                    <TextBlock Text="{Binding Text, ElementName=thisBtn}"
+                               Foreground="{TemplateBinding Foreground}"
+                               FontSize="{TemplateBinding FontSize}"
+                               VerticalAlignment="Center"
+                               SnapsToDevicePixels="True"/>
+
+                    <Grid x:Name="RightIconHost" Margin="8,0,0,0" VerticalAlignment="Center">
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RightIcon, ElementName=thisBtn}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+
+                        <Image Source="{Binding RightIcon, ElementName=thisBtn}" 
+                               Width="16" Height="16" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IconColor, ElementName=thisBtn}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+
+                        <Border Width="16" Height="16" Background="{Binding IconColor, ElementName=thisBtn}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IconColor, ElementName=thisBtn}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Border.OpacityMask>
+                                <ImageBrush ImageSource="{Binding RightIcon, ElementName=thisBtn}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border.OpacityMask>
+                        </Border>
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="mainBorder" Property="Opacity" Value="0.85"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="mainBorder" Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="0.97" ScaleY="0.97"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter TargetName="mainBorder" Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="mainBorder" Property="Opacity" Value="0.4"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Button.Template>
+</Button>

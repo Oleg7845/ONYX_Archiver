@@ -1,0 +1,94 @@
+﻿<Button x:Class="OnyxArchiver.UI.Components.ToolbarButton"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="thisBtn"
+        Background="Transparent" 
+        Foreground="{StaticResource MainTextBrush}" 
+        BorderThickness="0" 
+        Cursor="Hand"
+        Padding="5">
+
+    <Button.Template>
+        <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="mainBorder" 
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{Binding CornerRadius, ElementName=thisBtn}"
+                    Padding="{TemplateBinding Padding}"
+                    SnapsToDevicePixels="True">
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                    <Grid x:Name="IconHost" 
+                          Margin="0,0,0,3" 
+                          HorizontalAlignment="Center"
+                          Width="{Binding IconSize, ElementName=thisBtn}"
+                          Height="{Binding IconSize, ElementName=thisBtn}">
+
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Icon, ElementName=thisBtn}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+
+                        <Image Source="{Binding Icon, ElementName=thisBtn}" 
+                               Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IconColor, ElementName=thisBtn}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+
+                        <Border Background="{Binding IconColor, ElementName=thisBtn}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IconColor, ElementName=thisBtn}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Border.OpacityMask>
+                                <ImageBrush ImageSource="{Binding Icon, ElementName=thisBtn}" Stretch="Uniform"/>
+                            </Border.OpacityMask>
+                        </Border>
+                    </Grid>
+
+                    <TextBlock Text="{Binding Text, ElementName=thisBtn}"
+                               Foreground="{TemplateBinding Foreground}"
+                               FontSize="{TemplateBinding FontSize}"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               SnapsToDevicePixels="True"/>
+
+                </StackPanel>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource GrayBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="mainBorder" Property="Opacity" Value="0.7"/>
+                    <Setter TargetName="mainBorder" Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="0.95" ScaleY="0.95"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter TargetName="mainBorder" Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Button.Template>
+</Button>

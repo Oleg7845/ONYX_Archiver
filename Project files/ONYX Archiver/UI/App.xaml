@@ -1,0 +1,88 @@
+﻿<Application x:Class="OnyxArchiver.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:OnyxArchiver.UI"
+             xmlns:login="clr-namespace:OnyxArchiver.UI.MVVM.Auth.Login"
+             xmlns:reg="clr-namespace:OnyxArchiver.UI.MVVM.Auth.Registration"
+             xmlns:add="clr-namespace:OnyxArchiver.UI.MVVM.Archive.Add"
+             xmlns:open="clr-namespace:OnyxArchiver.UI.MVVM.Archive.Open"
+             xmlns:peers="clr-namespace:OnyxArchiver.UI.MVVM.Peers"
+             xmlns:settings="clr-namespace:OnyxArchiver.UI.MVVM.Settings">
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="MainTextBrush" Color="#808695" />
+        <SolidColorBrush x:Key="MainTextLightBrush" Color="#E1E4FF" />
+        <SolidColorBrush x:Key="SecondaryTextBrush" Color="#808695" Opacity="0.4" />
+        <SolidColorBrush x:Key="GrayBrush" Color="#282828" />
+        <SolidColorBrush x:Key="BlackBrush" Color="#1C1C1C" />
+        <SolidColorBrush x:Key="PanelBorderBrush" Color="#202020" />
+        <SolidColorBrush x:Key="GreenButtonBrush" Color="#117863" />
+        <SolidColorBrush x:Key="ErrorMessageBrush" Color="#B84444" />
+
+        <Style x:Key="NoHoverButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="IconButtonGridStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        Padding="4"
+                        CornerRadius="4">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1FFFFFFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate DataType="{x:Type login:LoginViewModel}">
+            <login:LoginView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type reg:RegistrationViewModel}">
+            <reg:RegistrationView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type add:AddArchiveViewModel}">
+            <add:AddArchiveView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type open:OpenArchiveViewModel}">
+            <open:OpenArchiveView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type peers:PeersViewModel}">
+            <peers:PeersView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type settings:SettingsViewModel}">
+            <settings:SettingsView />
+        </DataTemplate>
+    </Application.Resources>
+</Application>
